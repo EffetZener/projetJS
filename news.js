@@ -13,13 +13,17 @@ function ajouter_recherche()
 
 function supprimer_recherche(e)
 { 
-    
+    var parentNode = e.parentNode;
+	recherches.splice(recherches.indexOf(parentNode.firstChild.innerHTML));
+	e.parentNode.remove();
+	$.cookie("recherches", JSON.stringify({recherches}), { expires: 1000 });
 }
 
 
 function selectionner_recherche(e)
 { 
-
+    var queryValue = e.val;
+    console.log(queryValue);
 }
 
 
