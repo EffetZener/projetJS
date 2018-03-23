@@ -6,14 +6,13 @@ function ajouter_recherche()
 {
     if (recherches.indexOf($("#zone_saisie").val()) == -1){
         recherches.push($("#zone_saisie").val());
-        $("#recherche-stockees").html($("#recherche-stockees").html()+"<p class=\"titre-recherche\"><label>"+$("#zone_saisie").val() +"</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/></p>");
+        $("#recherche-stockees").html($("#recherche-stockees").html() + "<p class=\"titre-recherche\"><label onclik=\"selectionner-recherche(this)\">" +$("#zone_saisie").val() + "</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/></p>");
         $.cookie("recherches", JSON.stringify(recherches), {expires : 1000});
     }
 }
 
 function supprimer_recherche(e)
 { 
-
 
 }
 
