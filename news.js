@@ -4,7 +4,11 @@ var recherche_courante_news=[]; // tableau d'objets de type resultats (avec titr
 
 function ajouter_recherche()
 {
-
+    if (recherches.indexOf($("#zone_saisie").val()) == -1){
+        recherches.push($("#zone_saisie").val());
+        $("#recherche-stockees").html($("#recherche-stockees").html()+"<p class=\"titre-recherche\"><label>"+$("#zone_saisie").val()+"</label><img src=\"style/croix30.jpg\" class=\"icone-croix\"/> </p>");
+        $.cookie("recherches", JSON.stringify(recherches), {expires : 1000});
+    }
 }
 
 function supprimer_recherche(e)
