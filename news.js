@@ -6,7 +6,7 @@ function ajouter_recherche()
 {
     if (recherches.indexOf($("#zone_saisie").val()) == -1){
         recherches.push($("#zone_saisie").val());
-        $("#recherche-stockees").html($("#recherche-stockees").html() + "<p class=\"titre-recherche\"><label onclik=\"selectionner-recherche(this)\">" +$("#zone_saisie").val() + "</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/></p>");
+        $("#recherches-stockees").html($("#recherches-stockees").html() + "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">" + $("#zone_saisie").val() + "</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>");
         $.cookie("recherches", JSON.stringify(recherches), {expires : 1000});
     }
 }
