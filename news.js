@@ -22,8 +22,9 @@ function supprimer_recherche(e)
 
 function selectionner_recherche(e)
 { 
-    var queryValue = e.val;
-    console.log(queryValue);
+    var queryValue = e.parentNode.firstChild.innerHTML;
+    $("#zone-saisie").val(queryValue);
+    recherche_courante = queryValue;
 }
 
 
