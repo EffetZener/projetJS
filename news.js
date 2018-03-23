@@ -13,7 +13,7 @@ function ajouter_recherche()
 
 function supprimer_recherche(e)
 { 
-
+    
 }
 
 
