@@ -76,7 +76,20 @@ function maj_resultats(res)
 
 function sauver_nouvelle(e)
 {
-	
+	e.firstChild.setAttribute("src","style/disk15.jpg");
+	e.setAttribute("onclick","supprimer_nouvelle(this)");
+
+	var object = {
+		title : e.parentNode.firstChild.textContent,
+		date : e.parentNode.firstChild.nextSibling.textContent,
+		url : e.parentNode.firstChild.getAttribute("href")
+	};
+
+	if (indexOf(recherche_courante_news,object) == -1){
+		recherche_courante_news.push(object);
+		var cookie = JSON.stringify(recherche_courante_news);
+		setCookie(object.titre,cookie,1000);
+	}
 }
 
 
