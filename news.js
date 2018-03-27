@@ -37,7 +37,7 @@ function init()
             for (var i=0; i<array.length;i++){
                 recherches.push(array[i]);
                 var query = "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>";
-                document.getElementById('recherches-stockees').innerHTML += query;
+                $('#recherches-stockees').html($('#recherches-stockees').html() += query);
             }
     
       }
