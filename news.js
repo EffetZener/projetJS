@@ -22,28 +22,54 @@ function supprimer_recherche(e)
 
 function selectionner_recherche(e)
 { 
-    var queryValue = e.parentNode.firstChild.innerHTML;
-    $("#zone-saisie").val(queryValue);
-    recherche_courante = queryValue;
+    var p = e.parentNode;
+	var i = recherches[recherches.indexOf(p.firstChild.innerHTML)];
+	recherche_courante = i;
+	$('#zone_saisie').val(recherche_courante);
 }
 
 
 function init()
 {
-
+    if(document.cookie){
+        var cookie = getCookie("recherches");
+            var array = JSON.parse(cookie);
+            for (var i=0; i<array.length;i++){
+                recherches.push(array[i]);
+                var query = "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>";
+                document.getElementById('recherches-stockees').innerHTML += query;
+            }
+    
+      }
 }
 
 
 function rechercher_nouvelles()
 {
-	
+    $("#result").html="";
+    $('#wait').style.display="block";
+    var url ="search.php?data="+encodeURIComponent($('#zone_saisie').val());
+    ajax_get_request(maj_resultats, url, false);
 	
 }
 
+function ajax_get_request(callback,url,async){
+    var xhr = new XMLHttpRequest();  
+    xhr.onreadystatechange = function() {
+      if ((xhr.readyState==4) && (xhr.status == 200)){
+        callback(xhr.responseText);
+      }
+    };
+}
 
 function maj_resultats(res)
 {
-
+    $('#wait').style.display = "none";
+	var search = JSON.parse(res);
+	for (var i=0; i<search.length; i++){
+		var url = decodeEntities(search[i].url);
+		$('resultats').html($('resultats').html + "<p class=\"titre_result\"><a class=\"titre_news\" href="+url+" target=\"_blank\">"+search[i].titre+"</a><span class=\"date_news\">"+format(search[i].date)+"</span><span class=\"action_news\" onclick=\"sauver_nouvelle(this)\"><img src=\"horloge15.jpg\"/></span></p>");
+	}
 	
 }
 
