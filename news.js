@@ -3,17 +3,16 @@ var recherche_courante;// chaine de caracteres correspondant a la recherche cour
 var recherche_courante_news=[]; // tableau d'objets de type resultats (avec titre, date et url)
 
 function init()
-{/*
+{
     if(document.cookie){
         var cookie = getCookie("recherches");
             var array = JSON.parse(cookie);
             for (var i=0; i<array.length;i++){
                 recherches.push(array[i]);
-                var query = "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>";
-                $('#recherches-stockees').html($('#recherches-stockees').html() += query);
+                $('#recherches-stockees').html($('#recherches-stockees').html() +"<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>");
             }
     
-      }*/
+      }
 }
 
 function ajouter_recherche()
