@@ -5,8 +5,8 @@ var recherche_courante_news=[]; // tableau d'objets de type resultats (avec titr
 function init()
 {
     if(document.cookie){
-        var cookie = getCookie("recherches");
-            var array = JSON.parse(cookie);
+        var cookieQ = getCookie("recherches");
+            var array = JSON.parse(cookieQ);
             for (var i=0; i<array.length;i++){
                 recherches.push(array[i]);
                 $('#recherches-stockees').html($('#recherches-stockees').html() +"<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>");
