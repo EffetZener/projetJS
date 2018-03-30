@@ -7,7 +7,8 @@ function ajouter_recherche()
     if (recherches.indexOf($("#zone_saisie").val()) == -1){
         recherches.push($("#zone_saisie").val());
         $("#recherches-stockees").html($("#recherches-stockees").html() + "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">" + $("#zone_saisie").val() + "</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>");
-        $.cookie("recherches", JSON.stringify(recherches), {expires : 1000});
+        var value = JSON.stringify(recherches);
+		setCookie("recherches",value,1000);
     }
 }
 
@@ -16,7 +17,8 @@ function supprimer_recherche(e)
     var parentNode = e.parentNode;
 	recherches.splice(recherches.indexOf(parentNode.firstChild.innerHTML));
 	e.parentNode.remove();
-	$.cookie("recherches", JSON.stringify({recherches}), { expires: 1000 });
+	var value = JSON.stringify(recherches);
+	setCookie("recherches",value,1000);
 }
 
 
@@ -31,11 +33,11 @@ function selectionner_recherche(e)
 function init()
 {
     if(document.cookie){
-        var cookieQ = getCookie("recherches");
-            var array = JSON.parse(cookieQ);
+        var cookie = getCookie("recherches");
+            var array = JSON.parse(cookie);
             for (var i=0; i<array.length;i++){
                 recherches.push(array[i]);
-				document.getElementById('recherches-stockees').innerHTML += "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>";
+				document.getElementById('recherches-stockees').innerHTML += "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>";
 			}
     
       }
