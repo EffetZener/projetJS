@@ -9,8 +9,8 @@ function init()
             var array = JSON.parse(cookieQ);
             for (var i=0; i<array.length;i++){
                 recherches.push(array[i]);
-                $('#recherches-stockees').html($('#recherches-stockees').html() +"<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>");
-            }
+				document.getElementById('recherches-stockees').innerHTML += "<p class=\"titre-recherche\"><label onclick=\"selectionner_recherche(this)\">"+array[i]+"</label><img src=\"croix30.jpg\" class=\"icone-croix\" onclick=\"supprimer_recherche(this)\"/> </p>";
+			}
     
       }
 }
