@@ -87,10 +87,21 @@ function sauver_nouvelle(e)
 
 function supprimer_nouvelle(e)
 {
-    e.firstChild.setAttribute("src", "style/horloge15.jpg");
-    e.setAttribute("onclick","sauver_nouvelle(this)");
-}
+    e.firstChild.setAttribute("src","horloge15.jpg");
+	e.setAttribute("onclick","sauver_nouvelle(this)");
 
+	var obj = {
+		titreNouvelle: e.parentNode.firstChild.textContent,
+		dateNouvelle: e.parentNode.firstChild.nextSibling.textContent,
+		urlNouvelle: e.parentNode.firstChild.getAttribute("href")
+	};
+
+	if (indexOf(recherche_courante_news,obj) != -1){
+		recherche_courante_news.splice(indexOf(recherche_courante_news,obj),1);
+		var value = JSON.stringify(recherche_courante_news);
+		setCookie(obj.titre,value,1000);
+	}
+}
 
 
 
