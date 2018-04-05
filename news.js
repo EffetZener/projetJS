@@ -87,7 +87,7 @@ function sauver_nouvelle(e)
 
 function supprimer_nouvelle(e)
 {
-    e.firstChild.setAttribute("src","horloge15.jpg");
+    e.firstChild.setAttribute("src","style/horloge15.jpg");
 	e.setAttribute("onclick","sauver_nouvelle(this)");
 
 	var obj = {
