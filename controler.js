@@ -1,4 +1,4 @@
-var controller={};
+var controler={};
 
 controler.init = function(){
 	view.set_zone_saisie("");
@@ -47,7 +47,7 @@ controler.selectionner_recherche = function(e){
         }
       }
     else {
-        alert("Erreur : localStorage n'est pas supporté par votre navigateur");
+        alert("Erreur : localStorage n'est pas supporté");
     }
   };
 
