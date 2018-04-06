@@ -21,7 +21,7 @@ view.removeChild = function(parent,enfant){
 };
 
 view.ajouter_recherche = function(r){
-  $('recherches-stockees').html($('recherches-stockees').html()+ "<p class=\"titre-recherche\"><label onclick=\"controler.selectionner_recherche(this)\">"+r+"</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"controler.supprimer_recherche(this)\"/> </p>");
+  $('#recherches-stockees').html($('#recherches-stockees').html()+ "<p class=\"titre-recherche\"><label onclick=\"controler.selectionner_recherche(this)\">"+r+"</label><img src=\"style/croix30.jpg\" class=\"icone-croix\" onclick=\"controler.supprimer_recherche(this)\"/> </p>");
 };
 
 view.reset_recherche = function(){
@@ -45,15 +45,14 @@ view.display_div_wait = function(display){
   else{
     document.getElementById('wait').style.display = "none";
   }
-
 };
 
-view.affiche_nouvelles_enregistrees = function(url,title,date){
-  $('#resultats').html($('#resultats').html()+ "<p class=\"titre_result\"><a class=\"titre_news\" href="+url+" target=\"_blank\">"+title+"</a><span class=\"date_news\">"+date+"</span><span class=\"action_news\" onclick=\"controler.supprimer_nouvelle(this)\"><img src=\"style/disk15.jpg\"/></span></p>");
+view.affiche_nouvelles_enregistrees = function(url,titre,date){
+  $('#resultats').html($('#resultats').html()+ "<p class=\"titre_result\"><a class=\"titre_news\" href="+url+" target=\"_blank\">"+titre+"</a><span class=\"date_news\">"+date+"</span><span class=\"action_news\" onclick=\"controler.supprimer_nouvelle(this)\"><img src=\"style/disk15.jpg\"/></span></p>");
 };
 
-view.affiche_nouvelles = function(url,title,date){
-  $('#resultats').html($('#resultats').html()+ "<p class=\"titre_result\"><a class=\"titre_news\" href="+url+" target=\"_blank\">"+title+"</a><span class=\"date_news\">"+date+"</span><span class=\"action_news\" onclick=\"controler.sauver_nouvelle(this)\"><img src=\"style/horloge15.jpg\"/></span></p>");
+view.affiche_nouvelles = function(url,titre,date){
+  $('#resultats').html($('#resultats').html()+ "<p class=\"titre_result\"><a class=\"titre_news\" href="+url+" target=\"_blank\">"+titre+"</a><span class=\"date_news\">"+date+"</span><span class=\"action_news\" onclick=\"controler.sauver_nouvelle(this)\"><img src=\"style/horloge15.jpg\"/></span></p>");
 };
 
 view.reset_div_resultats = function(){

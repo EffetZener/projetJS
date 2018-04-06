@@ -4,24 +4,22 @@ controler.init = function(){
 	view.set_zone_saisie("");
 	if(document.cookie){
     var cookie = getCookie("recherches");
-		var array = JSON.parse(cookie);
-
-		for (var i=0; i<array.length;i++){
-			model.init(array[i]);
-			view.init(array[i]);
-		}
+    var array = JSON.parse(cookie);
+    for (var i=0; i<array.length;i++){
+        model.init(array[i]);
+        view.init(array[i]);
+    }
   }
 };
 
 controler.ajouter_recherche = function(){
-    var search = view.get_zone_saisie();
-  
+    var search = view.get_zone_saisie();  
     if(model.recherches.indexOf(search) == -1){
-      model.ajouter_recherche(search);
-          view.reset_recherche();
-          for(var i=0; i<model.recherches.length; i++){
-              view.ajouter_recherche(model.recherches[i]);
-          }
+        model.ajouter_recherche(search);
+        view.reset_recherche();
+        for(var i=0; i<model.recherches.length; i++){
+            view.ajouter_recherche(model.recherches[i]);
+        }
     }
   };
 
