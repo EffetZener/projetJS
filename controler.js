@@ -1,7 +1,7 @@
 var controler={};
 
 controler.init = function(){
-	view.set_zone_saisie("");
+    view.set_zone_saisie("");
     if(typeof localStorage!='undefined') {
 		var storage = localStorage.getItem("recherches");
 		var tab = JSON.parse(storage);
@@ -44,6 +44,7 @@ controler.supprimer_recherche = function(e){
 
 
 controler.selectionner_recherche = function(e){
+    view.clear_div_resultats();
     model.selectionner_recherche(view.get_parent(e));
     view.selectionner_recherche(model.recherche_courante);  
     if(typeof localStorage!='undefined'&& localStorage.getItem(e.firstChild.textContent)) {
@@ -85,6 +86,7 @@ controler.maj_resultats = function(res){
   };
 
 controler.rechercher_nouvelles = function(){
+    view.clear_div_resultats();
     model.rechercher_nouvelles();
     view.clear_div_resultats();
     view.display_div_wait("block");

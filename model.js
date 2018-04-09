@@ -38,6 +38,7 @@ model.rechercher_nouvelles = function(saisie){
 		model.recherche_courante_news=[] //si le tableau est null on le réinitialise;
 	}
 };
+}
 
 model.nouvellePresente = function(nveau){
   var array = model.recherche_courante_news;
