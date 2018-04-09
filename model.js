@@ -57,7 +57,7 @@ model.create_object = function(titreObj,dateObj,urlObj){
 };
 
 model.sauver_nouvelle = function(news){
-    if(model.recherche_courante_news.indexOf(news) == -1){
+    if (model.recherche_courante_news != null && indexOf(model.recherche_courante_news, news) == -1){
       model.recherche_courante_news.push(news);
   		localStorage.setItem(view.get_zone_saisie(),JSON.stringify(model.recherche_courante_news));
     }

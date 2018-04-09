@@ -37,12 +37,13 @@ controler.selectionner_recherche = function(e){
     if(typeof localStorage!='undefined') {
         view.reset_div_resultats();
         model.recherche_courante_news = JSON.parse(localStorage.getItem(e.firstChild.textContent));
-        console.log(model.recherche_courante_news);
-        for (var i=0; i<model.recherche_courante_news.length;i++){
-            var url = model.recherche_courante_news[i].url;
-            var titre = model.recherche_courante_news[i].titre;
-            var date = model.recherche_courante_news[i].date;
-            view.affiche_nouvelles_enregistrees(url,titre,date);
+        if (model.recherche_courante_news != null){
+            for (var i=0; i<model.recherche_courante_news.length;i++){
+                var url = model.recherche_courante_news[i].url;
+                var titre = model.recherche_courante_news[i].titre;
+                var date = model.recherche_courante_news[i].date;
+                view.affiche_nouvelles_enregistrees(url,titre,date);
+            }
         }
       }
     else {
