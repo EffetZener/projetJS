@@ -11,7 +11,7 @@ model.ajouter_recherche = function(rech){
   model.recherche_courante = rech;
   model.recherches.push(model.recherche_courante);
   model.recherches.sort();
-  localStorage.setItem("recherches",JSON.stringify(model.recherches));
+  localStorage.setItem("recherches",JSON.stringify(model.recherches)); //on charge la recherche en localstorage
   /*var cookieData = JSON.stringify(model.recherches);
   setCookie("recherches",cookieData,1000);*/
 };
@@ -30,10 +30,12 @@ model.selectionner_recherche = function(p){
 
 model.rechercher_nouvelles = function(saisie){
   if(typeof localStorage!='undefined') {
-		model.recherche_courante_news = JSON.parse(localStorage.getItem(saisie));
-	}
+    model.recherche_courante_news = JSON.parse(localStorage.getItem(saisie)); //on recupère les données en localstorage
+    if (model.recherche_courante_news === null) { 
+      model.recherche_courante_news = []; //si le tableau est null on le réinitialise
+	  }
 	else {
-		model.recherche_courante_news=[];
+		model.recherche_courante_news=[] //si le tableau est null on le réinitialise;
 	}
 };
 

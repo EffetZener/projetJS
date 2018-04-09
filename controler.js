@@ -5,10 +5,14 @@ controler.init = function(){
     if(typeof localStorage!='undefined') {
 		var storage = localStorage.getItem("recherches");
 		var tab = JSON.parse(storage);
-		for (var i=0; i<tab.length;i++){
-			model.init(tab[i]);
-			view.init(tab[i]);
-		}
+		if (tab !== null) {
+            for (var i=0; i<tab.length;i++){
+                model.init(tab[i]);
+                view.init(tab[i]);
+            }
+        } else {
+            tab = [];
+        }
 	}
     /*if(document.cookie){
     var cookie = getCookie("recherches");
