@@ -2,14 +2,22 @@ var controler={};
 
 controler.init = function(){
 	view.set_zone_saisie("");
-	if(document.cookie){
+    if(typeof localStorage!='undefined') {
+		var storage = localStorage.getItem("recherches");
+		var tab = JSON.parse(storage);
+		for (var i=0; i<tab.length;i++){
+			model.init(tab[i]);
+			view.init(tab[i]);
+		}
+	}
+    /*if(document.cookie){
     var cookie = getCookie("recherches");
     var array = JSON.parse(cookie);
     for (var i=0; i<array.length;i++){
         model.init(array[i]);
         view.init(array[i]);
     }
-  }
+  }*/
 };
 
 controler.ajouter_recherche = function(){

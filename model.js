@@ -11,14 +11,17 @@ model.ajouter_recherche = function(r){
   model.recherche_courante = r;
   model.recherches.push(model.recherche_courante);
   model.recherches.sort();
-  var cookieData = JSON.stringify(model.recherches);
-  setCookie("recherches",cookieData,1000);
+  localStorage.setItem("recherches",JSON.stringify(model.recherches));
+  /*var cookieData = JSON.stringify(model.recherches);
+  setCookie("recherches",cookieData,1000);*/
 };
 
 model.supprimer_recherche = function(p){
   model.recherches.splice(model.recherches.indexOf(p.firstChild.innerHTML),1);
-	var cookieData = JSON.stringify(model.recherches);
-	setCookie("recherches",cookieData,1000);
+  var obj_storage = JSON.stringify(model.recherches);
+	localStorage.setItem("recherches",obj_storage);
+  /*var cookieData = JSON.stringify(model.recherches);
+	setCookie("recherches",cookieData,1000);*/
 };
 
 model.selectionner_recherche = function(p){
