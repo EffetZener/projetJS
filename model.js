@@ -57,15 +57,13 @@ model.create_object = function(titreObj,dateObj,urlObj){
 };
 
 model.sauver_nouvelle = function(news){
-    if(indexOf(model.recherche_courante_news,news) == -1){
+    if(model.recherche_courante_news.indexOf(news) == -1){
       model.recherche_courante_news.push(news);
-  		var cookieVal = JSON.stringify(model.recherche_courante_news);
-  		setCookie(model.recherche_courante,cookieVal,1000);
+  		localStorage.setItem(view.get_zone_saisie(),JSON.stringify(model.recherche_courante_news));
     }
 };
 
 model.supprimer_nouvelle = function(o){
 	model.recherche_courante_news.splice(indexOf(model.recherche_courante_news,o),1);
-	var cookieVal = JSON.stringify(model.recherche_courante_news);
-	setCookie(obj.titre,cookieVal,1000);
+	localStorage.setItem(model.recherche_courante,JSON.stringify(model.recherche_courante_news));
 };
