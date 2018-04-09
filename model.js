@@ -7,8 +7,8 @@ model.init = function(rech){
   model.recherches.push(rech);
 };
 
-model.ajouter_recherche = function(r){
-  model.recherche_courante = r;
+model.ajouter_recherche = function(rech){
+  model.recherche_courante = rech;
   model.recherches.push(model.recherche_courante);
   model.recherches.sort();
   localStorage.setItem("recherches",JSON.stringify(model.recherches));
@@ -28,12 +28,12 @@ model.selectionner_recherche = function(p){
     model.recherche_courante = model.recherches[model.recherches.indexOf(p.firstChild.innerHTML)];
 };
 
-model.rechercher_nouvelles = function(){
+model.rechercher_nouvelles = function(saisie){
   if(typeof localStorage!='undefined') {
-		model.recherche_courante_news = JSON.parse(localStorage.getItem(view.get_zone_saisie()));
+		model.recherche_courante_news = JSON.parse(localStorage.getItem(saisie));
 	}
 	else {
-		alert("Erreur : localStorage non pris en charge");
+		model.recherche_courante_news=[];
 	}
 };
 
@@ -60,13 +60,17 @@ model.create_object = function(titreObj,dateObj,urlObj){
 };
 
 model.sauver_nouvelle = function(news){
-    if (indexOf(model.recherche_courante_news, news) == -1){
-      model.recherche_courante_news.push(news);
-  		localStorage.setItem(view.get_zone_saisie(),JSON.stringify(model.recherche_courante_news));
-    }
+  if (indexOf(model.recherche_courante_news, news) == -1){
+    model.recherche_courante_news.push(news);
+    localStorage.setItem(view.get_zone_saisie(),JSON.stringify(model.recherche_courante_news));
+  }
+  /*var cookieVal = JSON.stringify(model.recherche_courante_news);
+  setCookie(model.recherche_courante,cookieVal,1000);*/
 };
 
 model.supprimer_nouvelle = function(o){
 	model.recherche_courante_news.splice(indexOf(model.recherche_courante_news,o),1);
-	localStorage.setItem(model.recherche_courante,JSON.stringify(model.recherche_courante_news));
+  localStorage.setItem(model.recherche_courante,JSON.stringify(model.recherche_courante_news));
+  /*var cookieVal = JSON.stringify(model.recherche_courante_news);
+	setCookie(obj.titre,cookieVal,1000);*/
 };

@@ -41,9 +41,8 @@ controler.supprimer_recherche = function(e){
 
 controler.selectionner_recherche = function(e){
     model.selectionner_recherche(view.get_parent(e));
-    view.selectionner_recherche();  
-    if(typeof localStorage!='undefined') {
-        view.reset_div_resultats();
+    view.selectionner_recherche(model.recherche_courante);  
+    if(typeof localStorage!='undefined'&& localStorage.getItem(e.firstChild.textContent)) {
         model.recherche_courante_news = JSON.parse(localStorage.getItem(e.firstChild.textContent));
         if (model.recherche_courante_news != null){
             for (var i=0; i<model.recherche_courante_news.length;i++){
@@ -54,19 +53,16 @@ controler.selectionner_recherche = function(e){
             }
         }
       }
-    else {
-        alert("Erreur : localStorage n'est pas supporté");
-    }
   };
 
 controler.ajax_get_request = function(callback,url,async){
-    var xhr = new XMLHttpRequest();  
+    var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-        if ((xhr.readyState==4) && (xhr.status == 200)){
-            callback(xhr.responseText);
-        }
+      if ((xhr.readyState==4) && (xhr.status == 200)){
+        callback(xhr.responseText);
+      }
     };
-    xhr.open("GET", url, async);
+    xhr.open("GET", url, async); 
     xhr.send();
 };
   
